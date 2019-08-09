@@ -80,7 +80,34 @@ console.log(ticketPriceTotal);
 // Now that you have used .forEach(), .map(), .filter(), and .reduce().  I want you to think of potential problems you could solve given the data set and the 5k fun run theme.  Try to create and then solve 3 unique problems using one or many of the array methods listed above.
 
 // Problem 1
+// How many of each shirt size are needed
+function removeDuplicates(array) {
+  const filtered = [];
+  array.forEach(function(item) {
+    if (!filtered.includes(item)) {
+      filtered.push(item);
+    }
+  });
+  return filtered;
+}
+
+let shirtData = runners.map(runner => runner.shirt_size);
+let sizeCount = removeDuplicates(shirtData).map(size => shirtData.filter(item => item === size));
+sizeCount = sizeCount.map(list => [list[0], list.reduce((total, item) => total + 1, 0)]);
+console.log(sizeCount);
+
 
 // Problem 2
+// Populate a mailing list of participants
+
+const mailingList = [];
+runners.forEach(runner => mailingList.push(`${runner.email}, ${runner.first_name} ${runner.last_name}`));
+console.log(mailingList);
+
+
 
 // Problem 3
+// Find large donors
+
+let largeDonors = runners.filter(runner => runner.donation > 250);
+console.log(largeDonors)
