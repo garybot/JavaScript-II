@@ -81,28 +81,23 @@ console.log(ticketPriceTotal);
 
 // Problem 1
 // How many of each shirt size are needed
-function removeDuplicates(array) {
-  const filtered = [];
-  array.forEach(function(item) {
-    if (!filtered.includes(item)) {
-      filtered.push(item);
-    }
-  });
-  return filtered;
-}
 
-let shirtData = runners.map(runner => runner.shirt_size);
-let sizeCount = removeDuplicates(shirtData).map(size => shirtData.filter(item => item === size));
-sizeCount = sizeCount.map(list => [list[0], list.reduce((total, item) => total + 1, 0)]);
-console.log(sizeCount);
-
+const shirtSizeObj = {};
+runners.forEach(function(runner) {
+	if (runner.shirt_size in shirtSizeObj) {
+		shirtSizeObj[runner.shirt_size]++;
+	} else {
+		shirtSizeObj[runner.shirt_size] = 1;
+	}
+})
+console.log(shirtSizeObj);
 
 // Problem 2
 // Populate a mailing list of participants
 
 const mailingList = [];
 runners.forEach(runner => mailingList.push(`${runner.email}, ${runner.first_name} ${runner.last_name}`));
-console.log(mailingList);
+// console.log(mailingList);
 
 
 
@@ -110,4 +105,4 @@ console.log(mailingList);
 // Find large donors
 
 let largeDonors = runners.filter(runner => runner.donation > 250);
-console.log(largeDonors)
+// console.log(largeDonors);
