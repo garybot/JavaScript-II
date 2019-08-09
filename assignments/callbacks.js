@@ -60,4 +60,14 @@ function removeDuplicates(array, cb) {
   // removeDuplicates removes all duplicate values from the given array.
   // Pass the duplicate free array to the callback function.
   // Do not mutate the original array.
+  const filtered = [];
+  array.forEach(function(item) {
+    if (!filtered.includes(item)) {
+      filtered.push(item);
+    }
+  });
+  return cb(filtered);
 }
+
+let arr = [1, 1, 1, 2, 3, 4, 4, 5, 6, 6, 7, 7, 7];
+removeDuplicates(arr, myCallback);
