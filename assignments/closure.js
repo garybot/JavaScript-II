@@ -1,6 +1,22 @@
 // ==== Challenge 1: Write your own closure ====
 // Write a simple closure of your own creation.  Keep it simple!
 
+const myClosure = () => {
+	let friendlist = ["Me"];
+	return function(friend) {
+		friendlist.push(friend);
+		return friendlist;
+	}
+};
+
+const addFriend = myClosure();
+console.log(addFriend("Osha"));
+console.log(addFriend("Jacob"));
+console.log(addFriend("Kyle"));
+console.log(addFriend("Travis"));
+
+
+
 
 /* STRETCH PROBLEMS, Do not attempt until you have completed all previous tasks for today's project files */
 
